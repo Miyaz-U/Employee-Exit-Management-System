@@ -11,7 +11,7 @@ This is a Django-based system to manage employee resignations. It supports role-
 ## Tech Stack
 - Backend: Django
 - Frontend: HTML, CSS, JavaScript
-- Database: SQLite (default)
+- Database: MySQL (default)
 
 ## How to Run
 1. Clone the repository
