@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Approval Status - {{ resignation.emp_code.emp_name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/hr_review_resignation.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h1>Techstar Software Development India Pvt Ltd</h1>
+        <div class="employee-info">{{ resignation.emp_code.emp_code }} | {{ resignation.emp_code.emp_name }}</div>
+    </div>
+
+    <!-- Approval Status -->
+    <div class="section-title">Approval Status</div>
+    <div class="clearance-status">
+        <!-- Reporting Manager -->
+        <div class="clearance-item">
+            <div class="icon-circle {% if resignation.extras.manager_reviewed and resignation.extras.manager_approved == True %}approved{% elif resignation.extras.manager_reviewed and resignation.extras.manager_approved == False %}rejected{% else %}pending{% endif %}">
+                {% if resignation.extras.manager_reviewed and resignation.extras.manager_approved == True %}
+                ✓
+                {% elif resignation.extras.manager_reviewed and resignation.extras.manager_approved == False %}
+                ✖
+                {% else %}
+                ⏳
+                {% endif %}
+            </div>
+            <span>Manager</span>
+        </div>
+
+        <!--Security-->
+        <div class="clearance-item">
+            <div class="icon-circle {% if security_done %}approved{% else %}pending{% endif %}">
+                {% if security_done %}
+                ✓
+                {% else %}
+                ⏳
+                {% endif %}
+            </div>
+            <span>Security</span>
+        </div>
+
+        <!--Finance-->
+        <div class="clearance-item">
+            <div class="icon-circle {% if resignation.extras.finance_reviewed and resignation.extras.finance_approved == True %}approved
+            {% elif resignation.extras.finance_reviewed and resignation.extras.finance_approved == False %}rejected
+            {% else %}pending{% endif %}">
+                {% if resignation.extras.finance_reviewed and resignation.extras.finance_approved == True %}
+                ✓
+                {% elif resignation.extras.finance_reviewed and resignation.extras.finance_approved == False %}
+                ✖
+                {% else %}
+                ⏳
+                {% endif %}
+            </div>
+            <span>Finance</span>
+        </div>
+
+        <!-- IT  -->
+        <div class="clearance-item">
+            <div class="icon-circle {% if it_done %}approved{% else %}pending{% endif %}">
+                {% if it_done %}
+                ✓
+                {% else %}
+                ⏳
+                {% endif %}
+            </div>
+            <span>IT</span>
+        </div>
+
+        <!-- HR Status -->
+         <div class="clearance-item">
+            <div class="icon-circle
+            {% if resignation.extras.final_hr_approved %}approved
+            {% elif resignation.extras.hr_reviewed and resignation.extras.rejected_by == 'HR' %}rejected
+            {% else %}pending{% endif %}">
+                {% if resignation.extras.final_hr_approved %}
+                ✓
+                {% elif resignation.extras.hr_reviewed and resignation.extras.rejected_by == "HR" %}
+                ✖
+                {% else %}
+                ⏳
+                {% endif %}
+        </div>
+        <span>HR</span>
+    </div>
+</div>
+
+    <!-- Resignation Details -->
+    <div class="section-title">Resignation Details</div>
+    <div class="info-grid">
+        <div><strong>Name:</strong> {{ resignation.emp_code.emp_name }}</div>
+        <div><strong>Employee Code:</strong> {{ resignation.emp_code }}</div>
+        <div><strong>Resignation Date:</strong> {{ resignation.res_date }}</div>
+        <div><strong>Last Working Day:</strong> {{ resignation.last_day }}</div>
+        <div><strong>Reason:</strong> {{ resignation.reason }}</div>
+        <div><strong>HR Comments:</strong> {{ resignation.hr_comments }}</div>
+        <div><strong>Manager Comments:</strong> {{ resignation.manager_comments }}</div>
+        <div><strong>Finance Comments:</strong> {{ resignation.finance_comments }}</div>
+        <div><strong>Manager: </strong>{{ resignation.extras.manager_spoc_id.get_full_name }} [{{resignation.extras.manager_spoc_id}}]</div>
+        <div><strong>IT: </strong>{{ resignation.extras.IT_spoc_id.get_full_name }} [{{resignation.extras.IT_spoc_id}}]</div>
+        <div><strong>Finance: </strong>{{ resignation.extras.finance_spoc_id.get_full_name }} [{{resignation.extras.finance_spoc_id}}]</div>
+        <div><strong>HR: </strong>{{ resignation.extras.hr_spoc_id.get_full_name }} [{{resignation.extras.hr_spoc_id}}]</div>
+        <div><strong>Security: </strong>{{ resignation.extras.security_spoc_id.get_full_name }} [{{resignation.extras.security_spoc_id}}]</div>
+        {% if resignation.status == "Rejected" and resignation.extras.rejected_by %}
+            <div><strong>Resignation Status:</strong> Rejected by {{ resignation.extras.rejected_by }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Exit Letter Download -->
+    {% if hr_done %}
+    <div class="section-title">Download Experience Letter</div>
+    <div class="button-wrapper">
+        <a href="{% url 'download_exit_letter' resignation.resign_id %}">
+            <button type="button">Click here to Download</button>
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Requests{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/my_requests.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>My Requests</h1>
+
+    {% if requests_with_stage %}
+    <table class="request-table">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Request Type</th>
+                <th>Create Date</th>
+                <th>Status</th>
+                <th>Last Working Day</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request_data in requests_with_stage %}
+            {% if request_data.resignation %}
+            <tr>
+                <td><a href="{% url 'approval_status' request_data.resignation.resign_id %}">{{ request_data.resignation.resign_id }}</td>
+                    <td>Resignation</td>
+                <td>{{ request_data.resignation.res_date|date:"d M Y" }}</td>
+                <td>
+                    {{ request_data.stage }}
+                </td>
+                <td>{{ request_data.resignation.last_day|date:"d M Y" }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if requests_with_stage.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ requests_with_stage.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ requests_with_stage.number }} of {{ requests_with_stage.paginator.num_pages }}.
+            </span>
+
+            {% if requests_with_stage.has_next %}
+                <a href="?page={{ requests_with_stage.next_page_number }}">next</a>
+                <a href="?page={{ requests_with_stage.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% else %}
+        <p>You have not raised any resignation requests yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Disable Email & System Access{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/it_approvals_mail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="it-approvals-section-email" class="it-approvals-section-email">
+        <h1>Email & System Access</h1>
+        <h2>Pending Clearances:</h2>
+        {% if it_exit_requests %}
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Employee Name</th>
+              <th>Employee ID</th>
+              <th>Reason</th>
+              <th>Exit Date</th>
+              <th>Status</th>
+              <th>Email Access</th>
+              <th>System Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for request in it_exit_requests %}
+            <tr>
+              <td>{{ request.resign_id }}</td>
+              <td>{{request.emp_code.emp_name}}</td>
+              <td>{{request.emp_code.emp_code}}</td>
+              <td>{{request.reason}}</td>
+              <td>{{request.last_day}}</td>
+              <td>{{request.status}}</td>
+              <td>
+                <form class="email_form" method="post" action="{% url 'disable_email' request.resign_id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn" {% if request.extras.email_disabled %} disabled {% endif %}>
+                    {% if request.extras.email_disabled %} Disabled {% else %} Disable
+                    {% endif %}
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form class="system_form" method="post" action="{% url 'disable_system_access' request.resign_id %}">
+                  {% csrf_token %}
+                  <button type="submit"  class="btn" {% if request.extras.system_access_disabled %} disabled {% endif %}>
+                    {% if request.extras.system_access_disabled %} Disabled {% else %}
+                    Disable {% endif %}
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5">No pending requests</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>No pending clearances.</p>
+        {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/it_admin_dashboard.js' %}"></script>
+{% endblock %}

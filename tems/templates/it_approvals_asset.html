@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Disable Asset Access{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/it_approvals_asset.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="it-approvals-section-asset" class="it-approvals-section-asset">
+    <h1>Asset Return</h1>
+    <h2>Assets to be returned by exiting employees:</h2>
+    {% if it_exit_requests %}
+    <table border="1">
+        <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Employee Name</th>
+              <th>Employee ID</th>
+              <th>Asset Name</th>
+              <th>Asset Type</th>
+              <th>Serial Number</th>
+              <th>Returned</th>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in it_exit_requests %}
+            {% if request.assets_for_exit.all %}
+            <form method="post" action="{% url 'submit_asset_return' %}">
+              {% csrf_token %} 
+              {% for asset_extras in request.assets_for_exit.all %}
+              <tr>
+                <td>{{ request.resign_id }}</td>
+                <td>{{request.emp_code.emp_name}}</td>
+                <td>{{request.emp_code.emp_code}}</td>
+                <td>{{asset_extras.asset.asset_name}}</td>
+                <td>{{asset_extras.asset.asset_type}}</td>
+                <td>{{asset_extras.asset.serial_number}}</td>
+                <td>
+                  <input placeholder="Returned" type="checkbox" name="returned_assets" value="{{ asset_extras.asset.asset_id }}" {% if not asset_extras.asset.asset_allocated %}checked disabled{% endif %}/>
+                </td>
+                {% if forloop.first %}
+                <td rowspan="{{ request.assets_for_exit.count }}">
+                  <button type="submit" class="btn">Submit</button>
+                </td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </form>
+            {% endif %} 
+            {% empty %}
+            <tr>
+              <td colspan="7">No exit requests found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No exit requests found.</p>
+    <div class="pagination">
+        <span class="step-links">
+            {% if it_exit_requests.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ it_exit_requests.previous_page_number }}">previous</a>
+            {% endif %}
+            
+            <span class="current">
+               Page {{ it_exit_requests.number }} of {{ it_exit_requests.paginator.num_pages }}.
+            </span>
+            
+            {% if it_exit_requests.has_next %}
+            <a href="?page={{ it_exit_requests.next_page_number }}">next</a>
+            <a href="?page={{ it_exit_requests.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

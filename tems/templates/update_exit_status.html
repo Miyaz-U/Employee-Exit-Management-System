@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Update Exit Status{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/update_exit_status.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="box">
+        <h2>Review Exit Request</h2>
+        <div class="info">
+            <p><strong>Employee:</strong> {{ exit_request.emp_code.emp_name }}</p>
+            <p><strong>Reason:</strong> {{ exit_request.reason }}</p>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="status">Update Status</label>
+            <select id="status" name="status" required>
+                <option value="">-- Choose --</option>
+                <option value="Approved">Approve</option>
+                <option value="Rejected">Reject</option>
+            </select>
+            <div class="form-group">
+                <label for="manager_comments"><strong>Comments:</strong></label>
+                <textarea id="manager_comments" name="manager_comments" required>{{ exit_request.manager_comments }}</textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% if action_success %}
+<script>
+    alert("{{ message }}");
+    window.location.href = "{% url 'manager_approvals' %}";
+</script>
+{% endif %}
+{% endblock %}

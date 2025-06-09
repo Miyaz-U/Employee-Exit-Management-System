@@ -1,0 +1,211 @@
+[
+    {
+        "model": "tems.employeebasic",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "emp_code": 1,
+            "emp_name": "miyaz",
+            "emp_age": 25,
+            "emp_dob": "2000-01-01",
+            "emp_comp_email": "miyaz@example.com",
+            "emp_pers_email": "user@example.com",
+            "emp_phn_no": "9999999999",
+            "emp_loc": "Unknown",
+            "emp_cli_name": "Unknown",
+            "emp_join_date": "2015-05-19",
+            "emp_designation": "null",
+            "gender": ""
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5460,
+        "fields": {
+            "user": 2,
+            "emp_code": 5460,
+            "emp_name": "Tony Stark",
+            "emp_age": 27,
+            "emp_dob": "1997-08-06",
+            "emp_comp_email": "tony12it@gmail.com",
+            "emp_pers_email": "tony12stark@gmail.com",
+            "emp_phn_no": "5467890",
+            "emp_loc": "Chennai",
+            "emp_cli_name": "Avasoft",
+            "emp_join_date": "2022-11-08",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5461,
+        "fields": {
+            "user": 3,
+            "emp_code": 5461,
+            "emp_name": "Steve Rogers",
+            "emp_age": 28,
+            "emp_dob": "1996-07-03",
+            "emp_comp_email": "steve12emp@gmail.com",
+            "emp_pers_email": "steve12rogers@gmail.com",
+            "emp_phn_no": "24356798",
+            "emp_loc": "Bangalore",
+            "emp_cli_name": "Hexaware",
+            "emp_join_date": "2022-04-13",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5462,
+        "fields": {
+            "user": 4,
+            "emp_code": 5462,
+            "emp_name": "Bruce Banner",
+            "emp_age": 26,
+            "emp_dob": "1999-04-14",
+            "emp_comp_email": "bruce12hr@gmail.com",
+            "emp_pers_email": "bruce12banner@gmail.com",
+            "emp_phn_no": "456784567",
+            "emp_loc": "Pune",
+            "emp_cli_name": "Clustrex",
+            "emp_join_date": "2023-11-30",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5463,
+        "fields": {
+            "user": 5,
+            "emp_code": 5463,
+            "emp_name": "Clint Barton",
+            "emp_age": 29,
+            "emp_dob": "1995-08-25",
+            "emp_comp_email": "clint12hr@gmail.com",
+            "emp_pers_email": "clint12barton@gmail.com",
+            "emp_phn_no": "5678932456",
+            "emp_loc": "Tambaram",
+            "emp_cli_name": "Rapiddata",
+            "emp_join_date": "2015-02-25",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5464,
+        "fields": {
+            "user": 6,
+            "emp_code": 5464,
+            "emp_name": "Natasa Romanoff",
+            "emp_age": 35,
+            "emp_dob": "1990-03-07",
+            "emp_comp_email": "natasa12man@gmail.com",
+            "emp_pers_email": "natasa12romanoff@gmail.com",
+            "emp_phn_no": "567832456",
+            "emp_loc": "Chrompet",
+            "emp_cli_name": "Techstar",
+            "emp_join_date": "2017-05-09",
+            "emp_designation": "null",
+            "gender": "female"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5465,
+        "fields": {
+            "user": 7,
+            "emp_code": 5465,
+            "emp_name": "Wanda Maximoff",
+            "emp_age": 33,
+            "emp_dob": "1992-04-16",
+            "emp_comp_email": "wanda12man@gmail.com",
+            "emp_pers_email": "wanda12maximoff@gmail.com",
+            "emp_phn_no": "7689032456",
+            "emp_loc": "Sanatorium",
+            "emp_cli_name": "HCL",
+            "emp_join_date": "2012-06-18",
+            "emp_designation": "null",
+            "gender": "female"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5466,
+        "fields": {
+            "user": 8,
+            "emp_code": 5466,
+            "emp_name": "Scott Lang",
+            "emp_age": 30,
+            "emp_dob": "1994-06-12",
+            "emp_comp_email": "scott12it@gmail.com",
+            "emp_pers_email": "scott12lang@gmail.com",
+            "emp_phn_no": "6789213546",
+            "emp_loc": "Pallavaram",
+            "emp_cli_name": "Blackstraw",
+            "emp_join_date": "2016-01-19",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5467,
+        "fields": {
+            "user": 9,
+            "emp_code": 5467,
+            "emp_name": "Peter Quill",
+            "emp_age": 21,
+            "emp_dob": "2003-07-18",
+            "emp_comp_email": "peter12it@gmail.com",
+            "emp_pers_email": "peter12quill@gmail.com",
+            "emp_phn_no": "78903254678",
+            "emp_loc": "Royapettah",
+            "emp_cli_name": "Cognizant",
+            "emp_join_date": "2017-03-15",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5468,
+        "fields": {
+            "user": 10,
+            "emp_code": 5468,
+            "emp_name": "Peggy Carter",
+            "emp_age": 32,
+            "emp_dob": "1992-06-08",
+            "emp_comp_email": "peggy12fin@gmail.com",
+            "emp_pers_email": "peggy12carter@gmail.com",
+            "emp_phn_no": "67890234567",
+            "emp_loc": "Meenambakkam",
+            "emp_cli_name": "Resh and Tosh",
+            "emp_join_date": "2011-10-05",
+            "emp_designation": "null",
+            "gender": "female"
+        }
+    },
+    {
+        "model": "tems.employeebasic",
+        "pk": 5469,
+        "fields": {
+            "user": 11,
+            "emp_code": 5469,
+            "emp_name": "Wade Wilson",
+            "emp_age": 31,
+            "emp_dob": "1993-07-01",
+            "emp_comp_email": "wade12fin@gmail.com",
+            "emp_pers_email": "wade12wilson@gmail.com",
+            "emp_phn_no": "6789234567",
+            "emp_loc": "Perungalathur",
+            "emp_cli_name": "Sigetech Robotics",
+            "emp_join_date": "2019-01-31",
+            "emp_designation": "null",
+            "gender": "male"
+        }
+    }
+]

@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 40px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  th,
+  td {
+    padding: 14px 16px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #1f2d3d;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  td a {
+    font-weight: bold;
+    color: #28a745;
+    text-decoration: none;
+  }
+  
+  td a:hover {
+    text-decoration: underline;
+  }
+  
+  .employee-name {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: #f9fafb;
+    min-height: 100vh;
+    padding: 20px 15px;
+    position: fixed;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .sidebar ul li {
+    margin: 12px 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #f3f4f6;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #374151;
+    color: #fff;
+  }
+  
+  .content {
+    margin-left: 270px;
+    padding: 30px;
+  }
+  .clogo {
+    width: 190px; 
+    border-radius: 8px;
+  }
+  .logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 22px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .logout-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.5);
+  }
+  .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }

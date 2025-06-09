@@ -1,0 +1,112 @@
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .logo {
+        width: 250px;
+        margin-bottom: 20px;
+      }
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 24px;
+      }
+      label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 5px 0 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .signup-container {
+        margin-top: 15px;
+      }
+      .signup-container p {
+        margin: 0;
+        font-size: 16px;
+      }
+      .signup-container a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 16px;
+      }
+      .signup-container a:hover {
+        text-decoration: underline;
+      }
+      .forgot-password {
+        text-align: right;
+        margin-top: -10px;
+        margin-bottom: 15px;
+      }
+
+      .forgot-password a {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+      .incorrect {
+        color: red;
+      }
+      /* Hide spinners in number input fields (Chrome, Safari, Edge) */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Hide spinners in Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      .pass {
+        position: relative;
+      }
+      .password {
+        padding-right: 11px;
+      }
+      .func {
+        position: absolute;
+        top: 42%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }

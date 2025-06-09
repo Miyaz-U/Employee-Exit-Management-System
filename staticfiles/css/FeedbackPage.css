@@ -1,0 +1,46 @@
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 280px;
+    color: darkolivegreen;
+    width: 940px;
+    text-align: center;
+    margin-top: 0px;
+}
+h2 {
+    margin-bottom: 20px;
+}
+.mandatory {
+    color: red;
+    text-align: left;
+}
+.feedback-info {
+    color: darkmagenta;
+    text-align: left;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+    text-align: left;
+}
+input, textarea, select, button {
+    resize: none; ;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+button {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+button:hover {
+    background-color: darkred;
+}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Manager Approvals{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/manager_approvals.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="manager-approvals-section" class="manager-approvals-section">
+        <h2>Manager Dashboard - Pending Exit Requests</h2>
+        <!-- Manager Pending Requests Table here -->
+        <p>Total Pending Requests: <strong>{{ pending_count }}</strong></p>
+        <table>
+          <tr>
+            <th>Request ID</th>
+            <th>Employee Name</th>
+            <th>Code</th>
+            <th>Reason</th>
+            <th>Resignation Date</th>
+            <th>Last Day</th>
+            <th>Action</th>
+          </tr>
+          {% for req in exit_requests %}
+          <tr>
+            <td>{{ req.resign_id }}</td>
+            <td>{{ req.emp_code.emp_name }}</td>
+            <td>{{ req.emp_code.emp_code }}</td>
+            <td>{{ req.reason }}</td>
+            <td>{{ req.res_date }}</td>
+            <td>{{ req.last_day }}</td>
+            <td>
+              <a class="btn" href="{% url 'update_exit_status' req.resign_id %}">Review</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5">No pending requests.</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <div class="pagination">
+          <span class="step-links">
+            {% if exit_requests.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ exit_requests.previous_page_number }}">previous</a>
+            {% endif %}
+            
+            <span class="current">
+              Page {{ exit_requests.number }} of {{ exit_requests.paginator.num_pages }}.
+            </span>
+            
+            {% if exit_requests.has_next %}
+            <a href="?page={{ exit_requests.next_page_number }}">next</a>
+            <a href="?page={{ exit_requests.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+          </span>
+        </div>
+</div>
+{% endblock %}

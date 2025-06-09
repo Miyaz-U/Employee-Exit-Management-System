@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://media.licdn.com/dms/image/v2/C4E0BAQFB2e0c3baQvQ/company-logo_200_200/company-logo_200_200/0/1630631364709/techstargroup_logo?e=2147483647&v=beta&t=uaBzx5q2IQnBxxVfkA7F8v6fsrgrLGqr6TbX_oHAn64"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+  </head>
+  <body>
+    <div class="logo">
+      <img
+        src="https://cdn.prod.website-files.com/6393835bb435c428e5b6a54a/6393841f01ab88522a2396b9_Techstar%20Logo%20(1)%20(1).png"
+        alt="Techstar Logo"
+      />
+    </div>
+    <div class="container">
+      <h2>Sign Up</h2>
+      <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+        <label for="id_username">Employee ID</label>
+        {{ form.username }}
+
+        <label for="id_first_name">First Name</label>
+        {{ form.first_name }}
+
+        <label for="id_last_name">Last Name</label>
+        {{ form.last_name }}
+
+        <label for="id_email">Email</label>
+        {{ form.email }}
+
+        <label for="id_password1">Enter Password</label>
+        {{ form.password1 }}
+
+        <label for="id_password2">Re-enter Password</label>
+        {{ form.password2 }}
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account?</p>
+      <a href="{% url 'login' %}">Sign In</a>
+    </div>
+  </body>
+</html>

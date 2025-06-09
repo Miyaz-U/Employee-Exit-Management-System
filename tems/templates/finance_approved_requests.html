@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Approved Requests{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/finance_approved_requests.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Finance Approved Requests</h2>
+
+    {% if approved_requests %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Code</th>
+                    <th>Designation</th>
+                    <th>Resignation Date</th>
+                    <th>Last Working Day</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for req in approved_requests %}
+                <tr>
+                    <td>{{ req.resign_id }}</td>
+                    <td>{{ req.emp_code.emp_name }}</td>
+                    <td>{{ req.emp_code.emp_code }}</td>
+                    <td>{{ req.emp_code.emp_designation }}</td>
+                    <td>{{ req.res_date }}</td>
+                    <td>{{ req.last_day }}</td>
+                    <td>{{ req.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {% if approved_requests.has_previous %}
+                <a href="?page={{ approved_requests.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span>Page {{ approved_requests.number }} of {{ approved_requests.paginator.num_pages }}</span>
+            {% if approved_requests.has_next %}
+                <a href="?page={{ approved_requests.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="no-results">No approved requests found.</p>
+    {% endif %}
+</div>
+{% endblock %}

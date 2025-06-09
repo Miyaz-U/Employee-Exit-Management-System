@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Asset Approval{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/security_approve_asset.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Security Approval - Resignation ID: {{ resignation.resign_id }}</h2>
+    <p><strong>Employee:</strong> {{ resignation.emp_code.emp_name }}</p>
+
+    {% if error %}
+        <div class="alert">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <table class="asset-table">
+            <thead>
+                <tr>
+                    <th>Asset Name</th>
+                    <th>Asset Type</th>
+                    <th>Serial Number</th>
+                    <th>Returned</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ae in assets %}
+                    <tr>
+                        <td>{{ ae.asset.asset_name }}</td>
+                        <td>{{ ae.asset.asset_type }}</td>
+                        <td>{{ ae.asset.serial_number }}</td>
+                        <td>
+                            <input title="Returned" type="checkbox" name="returned_{{ ae.id }}" {% if ae.returned %}checked{% endif %}>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-success">Approve Security Clearance</button>
+        <a href="{% url 'security_view' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

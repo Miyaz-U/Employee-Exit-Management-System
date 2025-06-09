@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My App{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://media.licdn.com/dms/image/v2/C4E0BAQFB2e0c3baQvQ/company-logo_200_200/company-logo_200_200/0/1630631364709/techstargroup_logo?e=2147483647&v=beta&t=uaBzx5q2IQnBxxVfkA7F8v6fsrgrLGqr6TbX_oHAn64"
+    />
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <a href="{% url 'logout' %}" title="logout-button" class="logout-button">
+        <i class="fas fa-power-off"></i>
+    </a>
+
+    <div class="dashboard-container">
+        <div class="sidebar" id="sidebar">
+            <img src="https://cdn.prod.website-files.com/6393835bb435c428e5b6a54a/6393841f01ab88522a2396b9_Techstar%20Logo%20(1)%20(1).png" alt="Company Logo" class="cologo" />
+            <div class="sidebar-header">
+                <h2><i class="fas fa-tool"></i> <span>Welcome Back!</span></h2>
+            </div>
+            <ul>
+                <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+                {% for group in request.user.groups.all %}
+                    {% if group.name == "it" %}
+                        <li><a href="{% url 'it_approvals_mail' %}" id="it-approvals-link-email">Approvals</a></li>
+                    {% endif %}
+                    {% if group.name == "security" %}
+                        <li><a href="{% url 'security_view' %}" id="it-approvals-link-asset">Approvals</a></li>
+                    {% endif %}
+                    {% if group.name == "hr" %}
+                        <li><a href="{% url 'hr_approvals' %}" id="hr-approvals-link">Approvals</a></li>
+                        <li><a href="{% url 'feedback_analysis' %}" id="feedback-analysis">Feedback analysis</a></li>
+                        <li><a href="{% url 'hr_approved_requests' %}">Approved Requests</a></li>
+                    {% endif %}
+                    {% if group.name == "manager" %}
+                        <li><a href="{% url 'manager_approvals' %}" id="manager-approvals-link">Approvals</a></li>
+                        <li><a href="{% url 'manager_approved_requests' %}">Approved Requests</a></li>
+                    {% endif %}
+
+                    {% if group.name == "finance" %}
+                        <li><a href="{% url 'finance_approvals' %}" id="finance-approvals-link">Approvals</a></li>
+                        <li><a href="{% url 'finance_approved_requests' %}">Approved Requests</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li><a href="{% url 'submit_resignation' %}"><span>Create Exit Request</span></a></li>
+                <li><a href="{% url 'my_requests' %}"><span>My Requests</span></a></li>
+                <li><a href="{% url 'logout' %}"><span>Logout</span></a></li>
+            </ul>
+        </div>
+
+        <div class="content-area">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

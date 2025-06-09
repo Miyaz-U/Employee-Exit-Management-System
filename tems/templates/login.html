@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://media.licdn.com/dms/image/v2/C4E0BAQFB2e0c3baQvQ/company-logo_200_200/company-logo_200_200/0/1630631364709/techstargroup_logo?e=2147483647&v=beta&t=uaBzx5q2IQnBxxVfkA7F8v6fsrgrLGqr6TbX_oHAn64"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <img
+      src="https://cdn.prod.website-files.com/6393835bb435c428e5b6a54a/6393841f01ab88522a2396b9_Techstar%20Logo%20(1)%20(1).png"
+      alt="Techstar Logo"
+      class="logo"
+    />
+    <div class="container">
+      <h2>Welcome!</h2>
+      {% if form.errors %}
+  <p class="incorrect">Incorrect Employee ID or Password.</p>
+{% endif %}
+
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+        <label for="username">Employee ID</label>
+        <input
+          type="number"
+          name="username"
+          placeholder="Enter your ID"
+          id="username"
+          required
+        />
+        <label for="password">Password</label>
+        <div class="pass">
+          <input class="password" type="password" name="password" placeholder="Enter your Password" id="password" required />
+          <span onclick="togglePassword(this)" class="func fa fa-eye-slash"></span>
+        </div>
+        <div class="forgot-password">
+          <p>
+            <a href="{% url 'custom_password_reset' %}">Forgot Password?</a>
+          </p>
+        </div>
+
+        <button type="submit">Log in</button>
+      </form>
+      <div class="signup-container">
+        <p>Don't have an account?</p>
+        <a href="{% url 'signup' %}">Sign Up</a>
+      </div>
+    </div>
+    {% load static %}
+    <script src="{% static 'js/login.js' %}"></script>
+  </body>
+</html>

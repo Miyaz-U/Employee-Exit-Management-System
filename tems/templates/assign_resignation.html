@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Assign Request{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/assign_resignation.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>Assign Reviewers for Emp.ID: {{ resignation.emp_code }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Assign and Proceed</button>
+</form>
+{% endblock %}

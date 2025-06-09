@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Feedback Analysis{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/feedback_analysis.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Feedback Analysis</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Request ID</th>
+      <th>Feedback ID</th>
+      <th>Employee Name</th>
+      <th>Sentiment</th>
+      <th>Topics Identified</th>
+      <th>Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for fb in feedback_analysis %}
+    <tr>
+      <td>{{ fb.resignation_id }}</td>
+      <td>{{ fb.id }}</td>
+      <td>{{ fb.employee_name }}</td>
+      <td>{{ fb.sentiment }}</td>
+      <td>{{ fb.topics }}</td>
+      <td>{{ fb.summary }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

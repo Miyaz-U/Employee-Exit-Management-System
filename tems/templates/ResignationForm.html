@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Employee Resignation Form{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ResignationForm.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class='content'>
+    <div class="container">
+        <h2>Resignation Form</h2>
+        <p>The fields with * must be filled</p>
+        <form id="resignationForm" method="POST" action="{% url 'submit_resignation' %}">
+            {% csrf_token %}
+
+            <label for="name">Full Name: *</label>
+            <input type="text" id="name" name="name" placeholder="Name" value="{{ user.get_full_name }}" required readonly>
+
+            <label for="emp_code">Employee Code: *</label>
+            <input type="number" id="emp_code" name="emp_code" placeholder="Employee Code" value="{{ user.username }}" required readonly>
+
+            <label for="res_date">Date of Resignation:</label>
+            <input type="date" id="res_date" name="res_date" placeholder="Resignation Date" value="{{ form.res_date.value|default:'' }}" readonly>
+
+            <label for="last_day">Last Working Date (60 days from now):</label>
+            <input type="date" id="last_day" name="last_day" placeholder="Last Working Date" value="{{ form.last_day.value|default:'' }}" readonly>
+
+            <label for="reason">Reason for Resignation: *</label>
+            <textarea id="reason" name="reason" placeholder="Reason" rows="4" required>{{ form.reason.value|default:'' }}</textarea>
+
+            <div class="submit-resign-button">
+                <button type="submit">Submit Resignation</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Overlay and Popup (outside the form) -->
+    <div id="overlay" class="overlay"></div>
+
+    <div id="popup" class="popup">
+        <p>Are you sure you want to initiate resignation?</p>
+        <button class="yes" type="button" onclick="confirmResignation()">YES</button>
+        <button class="no" type="button" onclick="hidePopup()">NO</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/ResignationForm.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,25 @@
+.home-wrapper {
+        background-color: #f2f5f7;
+        min-height: 100vh;
+        padding-top: 100px;
+    }
+
+    .home {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 350px;
+        margin-left: 300px;  /* 👈 THIS IS WHERE YOU CONTROL HORIZONTAL POSITION */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .home h1 {
+        margin: 0 0 10px;
+        font-size: 28px;
+        color: #333;
+    }
+
+    .employee-code {
+        font-size: 18px;
+        color: #666;
+    }

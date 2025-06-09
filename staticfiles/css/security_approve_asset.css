@@ -1,0 +1,77 @@
+.container {
+    width: 924px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-left: 280px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.asset-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.asset-table th, .asset-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.asset-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.asset-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.asset-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+}
+
+button, .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 5px 0 0;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #777;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}

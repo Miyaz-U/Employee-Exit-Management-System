@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class='home-wrapper'>
+    <div class="home">
+       <h1>Hi {{ user.first_name }}!</h1>
+       <span class="employee-code">ID: {{ user.username }}</span>
+    </div>
+</div>
+{% endblock %}

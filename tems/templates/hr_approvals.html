@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}HR Approvals{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/hr_approvals.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="hr-approvals-section" class="hr-approvals-section">
+        <h2>HR - Resignation Requests</h2>
+        <!-- HR Resignation Requests Table here -->
+         {% if resignations %}
+        <table>
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Full Name</th>
+              <th>Employee Code</th>
+              <th>Resignation Date</th>
+              <th>Last Working Day</th>
+              <th>Reason</th>
+              <th>Status</th>
+              <th>Assign Reviewers</th>
+              <!--<th>Action</th>-->
+            </tr>
+          </thead>
+          <tbody>
+            {% for resignation in resignations %}
+            <tr>
+              <td>{{ resignation.resign_id }}</td>
+              <td>
+                <a href="{% url 'assign_resignation' resignation.resign_id %}">{{ resignation.emp_code.emp_name }}</a>
+              </td>
+              <td>{{ resignation.emp_code.emp_code }}</td>
+              <td>{{ resignation.res_date }}</td>
+              <td>{{ resignation.last_day }}</td>
+              <td>{{ resignation.reason }}</td>
+              <td>{{ resignation.status }}</td>
+              <td>{% if resignation.extras.hr_spoc_id %}<span class="assigned">Assigned</span>{% else %}<span class="pending">Pending</span>{% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if resignations.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ resignations.previous_page_number }}">previous</a>
+            {% endif %}
+            
+            <span class="current">
+              Page {{ resignations.number }} of {{ resignations.paginator.num_pages }}.
+            </span>
+            
+            {% if resignations.has_next %}
+            <a href="?page={{ resignations.next_page_number }}">next</a>
+            <a href="?page={{ resignations.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

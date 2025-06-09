@@ -1,0 +1,104 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: #f8fafc;
+  min-height: 100vh;
+  padding: 20px 15px;
+  position: fixed;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Keep content at the top */
+}
+
+.sidebar img {
+  width: 100%;
+  max-height: 80px;          /* Fix: prevent logo from pushing content down */
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  text-align: center;
+  margin: 10px 0 25px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 12px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #d1d5db;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar ul li a i {
+  margin-right: 12px;
+  font-size: 16px;
+  color: #93c5fd;
+  transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+}
+
+.sidebar ul li a:hover i {
+  color: #ffffff;
+}
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.logout-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.5);
+}

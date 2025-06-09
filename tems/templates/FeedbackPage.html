@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Exit Feedback Form{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/FeedbackPage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Exit Feedback Form</h2>
+    <p class="mandatory">The fields with * must be filled</p>
+    <p class="feedback-info">We value your feedback and would like to understand your experience with us. Please fill out the form below :-</p>
+    <form id="feedbackForm" action="{% url 'submit_feedback' resign_id=resignation.resign_id %}" method="POST">
+        {% csrf_token %}
+        
+        <label for="skills">Did you feel your skills and talents were utilized effectively?</label>
+        <textarea rows="3" placeholder="Your answer" id="skills" name="skills" required>{{ form.skills.value|default:'' }}</textarea>
+
+        <label for="suggestions_role">Do you have any suggestions for improving the role?</label>
+        <textarea rows="3" placeholder="Your answer" id="suggestions_role" name="suggestions_role" required>{{ form.suggestions_role.value|default:'' }}</textarea>
+
+        <label for="culture">What are your overall impressions of the company culture?</label>
+        <textarea rows="3" placeholder="Your answer" id="culture" name="culture" required>{{ form.culture.value|default:'' }}</textarea>
+
+        <label for="valued">Did you feel valued and appreciated as an employee?</label>
+        <textarea rows="3" placeholder="Your answer" id="valued" name="valued" required>{{ form.valued.value|default:'' }}</textarea>
+
+        <label for="support">Did you feel your manager provided adequate support and guidance?</label>
+        <textarea rows="3" placeholder="Your answer" id="support" name="support" required>{{ form.support.value|default:'' }}</textarea>
+
+        <label for="leadership">How would you rate the leadership of the company (1-5)?</label>
+        <select id="leadership" name="leadership" required>
+            <option value="" {% if form.leadership.value == "" %}selected{% endif %}>Select</option>
+            {% for i in "12345" %}
+                <option value="{{ i }}" {% if form.leadership.value == i %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="retention">Was there anything the company could have done to retain you?</label>
+        <textarea rows="3" placeholder="Your answer" id="retention" name="retention" required>{{ form.retention.value|default:'' }}</textarea>
+
+        <label for="incidents">Was there a specific incident or series of events that led to your decision?</label>
+        <textarea rows="3" placeholder="Your answer" id="incidents" name="incidents" required>{{ form.incidents.value|default:'' }}</textarea>
+
+        <label for="suggestions_company">What are your suggestions for improving the company overall?</label>
+        <textarea rows="3" placeholder="Your answer" id="suggestions_company" name="suggestions_company" required>{{ form.suggestions_company.value|default:'' }}</textarea>
+
+        <label for="recommend">Would you recommend this company to a friend?</label>
+        <select id="recommend" name="recommend" required>
+            <option value="" {% if form.recommend.value == "" %}selected{% endif %}>Select</option>
+            <option value="yes" {% if form.recommend.value == "yes" %}selected{% endif %}>Yes</option>
+            <option value="no" {% if form.recommend.value == "no" %}selected{% endif %}>No</option>
+        </select>
+        <label for="likes">What did you like about this company?</label>
+        <textarea rows="3" placeholder="Your answer" id="likes" name="likes" required>{{ form.likes.value|default:'' }}</textarea>
+
+        <label for="experience">Rate your overall experience (1-5):</label>
+        <select id="experience" name="experience" required>
+            <option value="" {% if form.experience.value == "" %}selected{% endif %}>Select</option>
+            {% for i in "12345" %}
+                <option value="{{ i }}" {% if form.experience.value == i %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="feedback">Any final thoughts or feedback?</label>
+        <textarea rows="3" placeholder="Your answer" id="feedback" name="feedback" required>{{ form.feedback.value|default:'' }}</textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/FeedbackPage.js' %}"></script>
+{% endblock %}

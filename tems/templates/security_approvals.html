@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Security Approval{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/security_approvals.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Pending Security Approvals</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Resignation ID</th>
+                <th>Employee</th>
+                <th>Submitted On</th>
+                <th>Last Working Day</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for req in exit_requests %}
+            <tr>
+                <td>{{ req.resign_id }}</td>
+                <td>{{ req.emp_code.emp_name }}</td>
+                <td>{{ req.res_date }}</td>
+                <td>{{ req.last_day }}</td>
+                <td>{{ req.status }}</td>
+                <td>
+                    <a href="{% url 'security_approve_asset' req.resign_id %}" class="btn btn-primary btn-sm">Review</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No pending security approvals.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

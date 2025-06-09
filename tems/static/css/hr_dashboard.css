@@ -1,0 +1,172 @@
+/* Updated hr_dashboard.css inspired by profile.html style */
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: #f9fafb;
+    min-height: 100vh;
+    padding: 20px 15px;
+    position: fixed;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    margin: 15px 0 25px;
+    font-weight: 600;
+    color: #e5e7eb;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 12px 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #f3f4f6;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #374151;
+    color: #fff;
+  }
+  
+  /* Main content styling */
+  .content {
+    margin-left: 270px;
+    padding: 30px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+    overflow: hidden;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #1f2937;
+    color: white;
+    font-weight: bold;
+  }
+  
+  tr:hover {
+    background-color: #f1f5f9;
+  }
+  
+  a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  button {
+    padding: 10px 16px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #059669;
+  }
+  
+  strong {
+    color: #16a34a;
+  }
+  
+  form {
+    margin: 0;
+  }
+  
+  /* Layout fix to prevent content hiding behind sidebar */
+  .content {
+    margin-left: 270px; /* same as sidebar width + some spacing */
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure table inside content respects layout */
+  .content table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+.logo {
+    width: 190px;
+    border-radius: 8px
+}
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.logout-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.5);
+}
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}

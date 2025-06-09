@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}HR Approved Requests{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/hr_approved_requests.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>HR Approved Resignations</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Resignation ID</th>
+                <th>Employee Name</th>
+                <th>Employee Code</th>
+                <th>Resignation Date</th>
+                <th>Last Working Day</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for req in approved_requests %}
+            <tr>
+                <td>{{ req.resign_id }}</td>
+                <td>{{ req.emp_code.emp_name }}</td>
+                <td>{{ req.emp_code.emp_code }}</td>
+                <td>{{ req.res_date }}</td>
+                <td>{{ req.last_day }}</td>
+                <td>{{ req.status }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No HR-approved requests found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
