@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3^h_&x#g31exi&pu&r(=6!5d#9ko-*2aas=u*%odfm)uchg5g8'
+SECRET_KEY = 'django-insecure-3^h_&x#g31exi&pu&r(=6!5d#9ko-*2aas=u*%odfm)uchg5g8'           
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'tems.onrender.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'myapp.middleware.DisableCacheMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
@@ -139,7 +140,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "tems" / "static",
